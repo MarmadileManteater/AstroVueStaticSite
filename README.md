@@ -1,4 +1,4 @@
-# 👩‍🚀Astro + Vue static site for GH pages
+# Static site built with Astro👩‍🚀 + Vue for GH pages
 
 This is an exact recreation of my [Qwik Static Site](https://github.com/MarmadileManteater/QwikStaticSite) using Astro and Vue.
 
