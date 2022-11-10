@@ -27,7 +27,7 @@ jobs:
           cd dist/
           sed -i 's@"/@".//@g' *.html
           sed -i 's@"/@"../@g' */*.html
-          sed -i 's@(//@(../@g' */*.css
+          sed -i 's@(/@(../@g' */*.css
 
       - name: 📦 Publish artifact
         uses: actions/upload-artifact@v3
