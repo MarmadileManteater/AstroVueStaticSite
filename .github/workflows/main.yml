@@ -21,13 +21,6 @@ jobs:
       - name: 🏗️ Build 
         run: |
           yarn build
-      
-      - name: 🔗 Make assets relatively linked
-        run: |
-          cd dist/
-          sed -i 's@"/@".//@g' *.html
-          sed -i 's@"/@"../@g' */*.html
-          sed -i 's@(/@(../@g' */*.css
 
       - name: 📦 Publish artifact
         uses: actions/upload-artifact@v3
