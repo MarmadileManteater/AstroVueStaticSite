@@ -25,7 +25,8 @@ jobs:
       - name: 🔗 Make assets relatively linked
         run: |
           cd dist/
-          sed -i 's@"/assets/@"./assets/@g' *.html */*.html
+          sed -i 's@"/assets/@"./assets/@g' *.html
+          sed -i 's@"/assets/@"../assets/@g' */*.html
 
       - name: 📦 Publish artifact
         uses: actions/upload-artifact@v3
