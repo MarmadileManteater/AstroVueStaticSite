@@ -1,0 +1,45 @@
+---
+import Layout from '../../../../layouts/Layout.astro'
+import tags from '../../../../../data/tags.json'
+import { getBlogPostById, getAllBlogPostIds } from '../../../../dataservice/blog-posts'
+import UnifiedContentList from '../../../../components/unified-content-list/unified-content-list.vue';
+
+const PAGE_SIZE = 5
+export function getStaticPaths() {
+  const posts = Array.from({ length: Math.ceil(getAllBlogPostIds().length / 5) }, (_, i) => { return {
+      params: {
+        pageNum: i.toString()
+      }
+    }
+  })
+  return posts.slice(1, posts.length)
+}
+
+const pageNum = parseInt(Astro.params.pageNum as string)
+const allPosts : Array<any> = getAllBlogPostIds().map((postId : string) => getBlogPostById(postId))
+const totalPages = allPosts.length / PAGE_SIZE
+const posts = allPosts.slice(pageNum * PAGE_SIZE, (pageNum + 1) * PAGE_SIZE)
+
+const previousPage = pageNum > 1?`../${pageNum - 1}/`:'../../'
+---
+
+<Layout title="Blog">
+  <div class='bg-white dark:bg-zinc-900 rounded-t-xl dark:text-white overflow-hidden'>
+    <UnifiedContentList content={posts} tagData={tags} startIndex={posts.length % 2 == 0?1:0} />
+    <a href={previousPage} class='p-5 inline-block hover:underline'>Previous Page &raquo;</a>
+    {(Array.from({ length: Math.ceil(totalPages as number) }, (_, i) => i)).slice(pageNum - 2 > 0?pageNum - 2:0, pageNum + 3).map((page) => {
+      if (page === pageNum) {
+        return <>
+          <strong class='text-xl p-5'>{page + 1}</strong>
+        </>
+      } else {
+        return <>
+          <a href={page > 0?`../${page}/`:'../../'} class='p-5 hover:underline' >{page + 1}</a>
+        </>
+      }
+    })}
+    {totalPages > pageNum + 1?<>
+      <a href={`../${pageNum + 1}/`} class='p-5 inline-block hover:underline'>Next Page &raquo;</a>
+    </>:<></>}
+  </div>
+</Layout>

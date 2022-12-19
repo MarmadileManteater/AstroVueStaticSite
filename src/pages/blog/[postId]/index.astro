@@ -1,0 +1,28 @@
+---
+import { getAllBlogPostIds, getBlogPostById } from '../../../dataservice/blog-posts'
+import Layout from '../../../layouts/Layout.astro'
+import tagData from '../../../../data/tags.json'
+import TagList from '../../../components/tag-list/tag-list.vue'
+export function getStaticPaths() {
+  return getAllBlogPostIds().map((id : string) => {
+    return {
+      params: {
+        postId: id
+      }
+    }
+  })
+}
+const { postId } = Astro.params
+const post = getBlogPostById(postId)
+---
+<Layout title={post.title as string}>
+  <div class='bg-white dark:bg-zinc-900 rounded-t-xl dark:text-white overflow-hidden'>
+    <div class='p-8'>
+      <h2 class='text-4xl'>{post.title}</h2>
+      <TagList {...{tags: post.tags, tagData }} />
+      <p class='pb-2 text-zinc-500 dark:text-zinc-400'><em>Last updated {new Date(post.gittime).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZone: 'GMT' })} UTC</em></p>
+      <div set:html={post.html}></div>
+    </div>
+  </div>
+</Layout>
+

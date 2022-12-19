@@ -1,5 +1,7 @@
 
 <script setup>
+  import TagList from '../tag-list/tag-list.vue'
+
   const props = defineProps({
     title: {
       type: String,
@@ -7,7 +9,8 @@
     },
     thumbnail: {
       type: String,
-      required: true
+      required: false,
+      default: null
     },
     tags: {
       type: Array,
@@ -53,25 +56,24 @@
   <div
     :class="['outer-grid', 'project-card', 'md:pt-0', 'pt-4', index % 2 === 0?'dark:bg-zinc-800':'dark:bg-zinc-900', index % 2 === 0?'bg-zinc-100':'bg-white', 'dark:text-white']"
   >
-    <div class='p-4 pr-0 image-grid'>
+    <div
+      v-if='thumbnail !== null'
+      class='p-4 pr-0 image-grid'
+      >
       <a :href="titleLink"><img :src="thumbnail" :alt="title" /></a>
     </div>
     <div class="p-4 pl-4">
-      <a 
-        v-for="tag in getTagArray(tags)"
-        :href="tag.link"
-        target="_blank"
-        >
-        <span :class="[tag.name, 'align-top', 'hover:underline', 'p-2', 'rounded-xl', 'mr-3', 'mb-2', 'mt-2', 'inline-block', 'bg-zinc-200', 'dark:bg-zinc-700', 'dark:text-white']">
-          {{tag.name}}
-        </span>
-      </a>
+      <TagList
+        :tags="tags"
+        :tagData="tagData"
+      />
       <a
         :href="titleLink"
         class="hover:underline"
         >
         <h2 :class="['font-bold', 'text-2xl', 'mb-4', title.search(' ') === -1?'break-all':'break-words']">{{title}}</h2>
       </a>
+      <p class="mb-3">{{summary}}</p>
       <slot />
     </div>
   </div>

@@ -1,0 +1,17 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import tags from '../../../data/tags.json'
+import { getBlogPostById, getAllBlogPostIds } from '../../dataservice/blog-posts'
+import UnifiedContentList from '../../components/unified-content-list/unified-content-list.vue';
+
+const PAGE_SIZE = 5
+const allPosts : Array<any> = getAllBlogPostIds().map((postId : string) => getBlogPostById(postId))
+const posts = allPosts.slice(0, PAGE_SIZE)
+---
+
+<Layout title="Blog">
+  <div class='bg-white dark:bg-zinc-900 rounded-t-xl dark:text-white overflow-hidden'>
+    <UnifiedContentList content={posts} tagData={tags} startIndex={0} />
+    <a href="./page/1/" class='p-5 inline-block hover:underline'>Next Page &raquo;</a>
+  </div>
+</Layout>

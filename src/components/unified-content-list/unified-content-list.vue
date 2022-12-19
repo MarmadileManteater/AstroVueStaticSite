@@ -33,7 +33,6 @@
       :tagData="tagData"
       :index="index + startIndex"
     >
-    <p class="mb-3">{{contentItem.summary}}</p>
       <ProjectButton
         v-for="(button, index) in contentItem.buttons"
         :link="button.link"
@@ -43,5 +42,16 @@
         {{button.prefix}} <strong>{{button.locationName}}</strong>
       </ProjectButton>
     </ContentCard>
-</div>
+    <ContentCard
+      v-if="contentItem.type === 'IBlogPost'"
+      :title="contentItem.title"
+      :titleLink="`/blog/${contentItem.id}`"
+      :summary="contentItem.shortDescription"
+      :tags="contentItem.tags"
+      :tagData="tagData"
+      :index="index + startIndex"
+    >
+      <p class='pb-2 text-zinc-500 dark:text-zinc-400'><em>Last updated {{new Date(contentItem.gittime).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZone: 'GMT' })}} UTC</em></p>
+    </ContentCard>
+  </div>
 </template>
