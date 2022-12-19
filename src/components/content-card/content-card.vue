@@ -12,27 +12,27 @@
     tags: {
       type: Array,
       required: false,
-      defaultValue: []
+      default: []
     },
     tagData: {
       type: Array,
       required: false,
-      defaultValue: []
+      default: []
     },
     titleLink: {
       type: String,
       required: false,
-      defaultValue: ''
+      default: ''
     },
     summary: {
       type: String,
       required: false,
-      defaultValue: ''
+      default: ''
     },
     index: {
       type: Number,
       required: false,
-      defaultValue: 0
+      default: 0
     }
   })
   const getTagData = (givenName) => {

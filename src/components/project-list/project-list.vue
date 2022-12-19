@@ -1,6 +1,7 @@
 <script setup>
   import ContentCard from '../content-card/content-card.vue';
   import ProjectButton from '../project-button/project-button.vue';
+  import UnifiedContentList from '../unified-content-list/unified-content-list.vue';
 </script>
 
 <script >
@@ -9,7 +10,8 @@
     export default defineComponent({
         data() {
           return {
-            projectsSorted: this.projects,
+            workingArray: this.projects.map(p => p),
+            exposedArray: this.projects.map(p => p),
             sortType: 'featured'
           }
         },
@@ -27,11 +29,16 @@
           sortType() {
             switch (this.sortType) {
               case 'featured':
-                this.projectsSorted = this.projects.map(p => p)
+                this.workingArray = this.projects.map(p => p)
                 break
               case 'lastUpdate':
-                this.projectsSorted = this.projects.map(p => p).sort((a, b) => { return new Date(b.lastUpdate).getTime() - new Date(a.lastUpdate).getTime() })
+                this.workingArray = this.projects.map(p => p).sort((a, b) => { return new Date(b.lastUpdate).getTime() - new Date(a.lastUpdate).getTime() })
                 break
+            }
+          },
+          workingArray() {
+            for (let i = 0; i < this.workingArray.length; i++) {
+              this.exposedArray[i] = this.workingArray[i]
             }
           }
         },
@@ -56,23 +63,10 @@
       :class="[sortType === 'lastUpdate'?'decoration-solid underline cursor-default':'cursor-pointer', 'select-none', 'p-4', 'inline-block']"
       v-on:click="sortByLatest"
     >Sort by last updated</a>
-    <ContentCard
-      v-for="(project, index) in projectsSorted"
-      :title="project.title"
-      :titleLink="project.buttons.at(-1).link"
-      :summary="project.summary"
-      :thumbnail="project.thumbnail"
-      :tags="project.tags"
+    <UnifiedContentList
+      :content="exposedArray"
       :tagData="tagData"
-      :index="index"
-    >
-      <p class="mb-3">{{project.summary}}</p>
-      <ProjectButton
-        v-for="(button, index) in project.buttons"
-        :link="button.link"
-        :target="button.target"
-        :index="index"
-      >{{button.prefix}} <strong>{{button.locationName}}</strong></ProjectButton>
-    </ContentCard>
+      :startIndex="0"
+    />
   </div>
 </template>

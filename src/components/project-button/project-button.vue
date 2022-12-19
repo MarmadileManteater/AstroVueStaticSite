@@ -8,12 +8,12 @@
     target: {
       type: String,
       required: false,
-      defaultValue: 'self'
+      default: 'self'
     },
     index: {
       type: Number,
       required: false,
-      defaultValue: 0
+      default: 0
     }
   })
 </script>
