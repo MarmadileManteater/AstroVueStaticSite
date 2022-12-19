@@ -2,6 +2,7 @@
 import { getAllBlogPostIds, getBlogPostById } from '../../../dataservice/blog-posts'
 import Layout from '../../../layouts/Layout.astro'
 import tagData from '../../../../data/tags.json'
+// @ts-ignore
 import TagList from '../../../components/tag-list/tag-list.vue'
 export function getStaticPaths() {
   return getAllBlogPostIds().map((id : string) => {
