@@ -11,6 +11,7 @@
       required: true
     } 
   })
+  
   const getTagData = (givenName) => {
     return props.tagData.find(({name}) => { return name === givenName })
   }

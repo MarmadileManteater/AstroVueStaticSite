@@ -1,6 +1,8 @@
 ---
-import Header from '../components/header/header.vue';
-import headerImage from '../images/marmadilemanteater.png';
+import Header from '../components/header/header.vue'
+import InvidiousVideoBackground from '../components/invidious-background-video/invidious-video-background.vue';
+import headerImage from '../images/marmadilemanteater.png'
+
 export interface Props {
 	title: string;
 }
@@ -15,13 +17,21 @@ const { title } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
+    <script>
+      // using turbo for SPA like behavior
+      import * as turbo from '@hotwired/turbo'
+      turbo.start()
+    </script>
 		<title>{title}</title>
 	</head>
 	<body>
-    <Header />
-		<main style='width:1000px;max-width:100%;margin-left:auto;margin-right:auto;'>
-		  <slot />
-		</main>
+    <InvidiousVideoBackground client:load videoId='XvtpXPbbiVA' itag='134' />
+    <turbo-frame id="main" data-turbo-action="replace" >
+      <Header />
+      <main style='width:1000px;max-width:100%;margin-left:auto;margin-right:auto;'>
+        <slot />
+      </main>
+    </turbo-frame>
 	</body>
 </html>
 <style is:global>
