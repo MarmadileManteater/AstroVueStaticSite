@@ -1,5 +1,5 @@
 <script setup>
-  import ProjectCard from '../project-card/project-card.vue';
+  import ContentCard from '../content-card/content-card.vue';
   import ProjectButton from '../project-button/project-button.vue';
   import { defineComponent } from 'vue';
 </script>
@@ -22,7 +22,7 @@
 <template>
   <div class='project-list rounded-t-xl' style='overflow:hidden;'>
     <div class='project-list'>
-      <ProjectCard
+      <ContentCard
       v-for="(project, index) in projects"
       :title="project.title"
       :titleLink="project.buttons.at(-1).link"
@@ -39,7 +39,7 @@
         :target="button.target"
         :index="index + 1"
       >{{button.prefix}} <strong>{{button.locationName}}</strong></ProjectButton>
-      </ProjectCard>
+      </ContentCard>
     </div>
     <a href='./projects' class='p-5 inline-block hover:underline'>View more &raquo;</a>
   </div>

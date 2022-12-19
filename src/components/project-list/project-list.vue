@@ -1,5 +1,5 @@
 <script setup>
-  import ProjectCard from '../project-card/project-card.vue';
+  import ContentCard from '../content-card/content-card.vue';
   import ProjectButton from '../project-button/project-button.vue';
 </script>
 
@@ -56,7 +56,7 @@
       :class="[sortType === 'lastUpdate'?'decoration-solid underline cursor-default':'cursor-pointer', 'select-none', 'p-4', 'inline-block']"
       v-on:click="sortByLatest"
     >Sort by last updated</a>
-    <ProjectCard
+    <ContentCard
       v-for="(project, index) in projectsSorted"
       :title="project.title"
       :titleLink="project.buttons.at(-1).link"
@@ -73,6 +73,6 @@
         :target="button.target"
         :index="index"
       >{{button.prefix}} <strong>{{button.locationName}}</strong></ProjectButton>
-    </ProjectCard>
+    </ContentCard>
   </div>
 </template>
