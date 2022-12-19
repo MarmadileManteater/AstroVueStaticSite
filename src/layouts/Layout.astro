@@ -21,6 +21,13 @@ const { title } = Astro.props;
       // using turbo for SPA like behavior
       import * as turbo from '@hotwired/turbo'
       turbo.start()
+      const beforeRender = () => {
+        document.removeEventListener('turbo:before-render', beforeRender)
+        window.scrollTo(0, 0)
+      }
+      document.addEventListener('turbo:load', () => {
+        document.addEventListener('turbo:before-render', beforeRender)
+      })
     </script>
 		<title>{title}</title>
 	</head>
