@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import projects from '../data/projects.json'
-import tags from '../data/tags.json'
+import projects from '../../data/projects.json'
+import tags from '../../data/tags.json'
 import ProjectPreview from '../components/project-preview/project-preview.vue'
 import portrait from '../images/portrait.png'
 
@@ -30,7 +30,6 @@ const getFeatured = (projectData : Array<any>) => {
         <img src={portrait} class=' w-1/4 mr-auto ml-auto mt-1 mb-4 sm:mb-0 sm:mr-4 sm:w-20 sm:mt-0'  />
         <div>
           <p class='text-xl md:text-base'>Hello! I'm MarmadileManteater. My real name is Emma, and you can look it up. That's an actual picture of me! <a href='mailto:marmadilemanteater@proton.me' class='inline-block hover:underline text-blue-600 dark:text-red-300'>📭Email me</a></p>
-          
         </div>
       </div>
     </div>
