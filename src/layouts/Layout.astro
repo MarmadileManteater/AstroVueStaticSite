@@ -21,21 +21,22 @@ const { title } = Astro.props;
       // using turbo for SPA like behavior
       import * as turbo from '@hotwired/turbo'
       turbo.start()
-      const beforeRender = () => {
+      const beforeRender = (ev) => {
         document.removeEventListener('turbo:before-render', beforeRender)
         window.scrollTo(0, 0)
+        document.title = ev.detail.newBody.querySelector('main').getAttribute('data-title')
       }
       document.addEventListener('turbo:load', () => {
         document.addEventListener('turbo:before-render', beforeRender)
       })
     </script>
-		<title>{title}</title>
+    <title >{title}</title>
 	</head>
 	<body>
     <InvidiousVideoBackground client:load videoId='XvtpXPbbiVA' itag='136' />
     <turbo-frame id="main" data-turbo-action="advance" >
       <Header />
-      <main style='width:1000px;max-width:100%;margin-left:auto;margin-right:auto;'>
+      <main data-title={title} style='width:1000px;max-width:100%;margin-left:auto;margin-right:auto;'>
         <slot />
       </main>
     </turbo-frame>
