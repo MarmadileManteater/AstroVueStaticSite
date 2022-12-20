@@ -10,7 +10,7 @@
       server: {
         type: String,
         required: false,
-        default: 'http://localhost:8081'
+        default: 'https://invidious.namazso.eu'
       },
       itag: {
         type: String,
@@ -79,7 +79,6 @@
       }
       window.addEventListener('click', onFirstInteraction)
       window.addEventListener('keypress', onFirstInteraction)
-      this.$refs.video.play()
     }
   })
   
