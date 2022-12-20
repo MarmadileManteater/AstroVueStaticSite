@@ -6,18 +6,18 @@
 </script>
 
 <script >
-    export default defineComponent({
-        props: {
-            projects: {
-              type: Array,
-              required: true
-            },
-            tagData: {
-              type: Array,
-              required: true
-            }
-        }
-    })
+  export default defineComponent({
+    props: {
+      projects: {
+        type: Array,
+        required: true
+      },
+      tagData: {
+        type: Array,
+        required: true
+      }
+    }
+  })
 </script>
 
 <template>

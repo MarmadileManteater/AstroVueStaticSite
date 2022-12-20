@@ -21,7 +21,7 @@ const { title } = Astro.props;
       // using turbo for SPA like behavior
       import * as turbo from '@hotwired/turbo'
       turbo.start()
-      const beforeRender = (ev) => {
+      const beforeRender = (ev : any) => {
         document.removeEventListener('turbo:before-render', beforeRender)
         window.scrollTo(0, 0)
         document.title = ev.detail.newBody.querySelector('main').getAttribute('data-title')
@@ -33,7 +33,7 @@ const { title } = Astro.props;
     <title >{title}</title>
 	</head>
 	<body>
-    <InvidiousVideoBackground client:load videoId='XvtpXPbbiVA' itag='136' />
+    <InvidiousVideoBackground client:load videoId='XvtpXPbbiVA' itag='134' />
     <turbo-frame id="main" data-turbo-action="advance" >
       <Header />
       <main data-title={title} style='width:1000px;max-width:100%;margin-left:auto;margin-right:auto;'>
@@ -69,5 +69,34 @@ const { title } = Astro.props;
     body {
       background-color: black;
     }
+  }
+  /* styles for content-card ; for some reason turbo can't find them if they are in the component 😢*/
+  .outer-grid {
+      display: flex;
+  }
+
+  .image-grid {
+      min-width: 200px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+  }
+
+  .image-grid img {
+      max-height: 153px;
+      display: inline-block;
+  }
+  @media (max-width: 768px) {
+      .outer-grid {
+          display: block;
+      }
+  }
+  pre > div {
+    margin-bottom: -30px;
+    background-color: black;
+    color: white;
+    padding: 15px 10px;
+    white-space: break-spaces;
   }
 </style>

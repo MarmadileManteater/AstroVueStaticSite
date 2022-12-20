@@ -78,28 +78,3 @@
     </div>
   </div>
 </template>
-
-<style scoped>
-  .outer-grid {
-      display: flex;
-  }
-
-  .image-grid {
-      min-width: 200px;
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      text-align: center;
-  }
-
-  .image-grid img {
-      max-height: 153px;
-      display: inline-block;
-  }
-  @media (max-width: 768px) {
-      .outer-grid {
-          display: block;
-      }
-  }
-
-</style>
