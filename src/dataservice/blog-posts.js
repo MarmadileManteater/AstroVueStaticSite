@@ -3,7 +3,6 @@ import fs from 'fs'
 import child_process from 'child_process'
 import { DOMParser, XMLSerializer } from '@xmldom/xmldom'
 import { highlightAuto } from 'highlight.js'
-import 'highlight.js/styles/stackoverflow-dark.css';
 
 export function getAllBlogPostIds() {
   const { readdirSync } = fs
