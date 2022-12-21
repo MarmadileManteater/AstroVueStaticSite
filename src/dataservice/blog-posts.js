@@ -2,7 +2,7 @@
 import fs from 'fs'
 import child_process from 'child_process'
 import { DOMParser, XMLSerializer } from '@xmldom/xmldom'
-import { highlightAuto } from 'highlight.js'
+import hljs from 'highlight.js/lib/common'
 
 export function getAllBlogPostIds() {
   const { readdirSync } = fs
@@ -45,12 +45,14 @@ export function getBlogPostById(postId) {
   const tagElements = Array.from(tagsElement?.childNodes?tagsElement?.childNodes:[]).filter((node) => node.textContent?.trim() !== '')
   const tags = Array.from(tagElements?tagElements:[]).map((tag) => tag.textContent)
   postMarkup.removeChild(tagsElement)
-  Array.from(postMarkup.getElementsByTagName('code')).map((element) => {
-    const htmlFormattedCode = highlightAuto(element.textContent).value
-    const newElement = parser.parseFromString(`<div><div>${htmlFormattedCode}</div></div>`).firstChild.childNodes[0]
-    element.parentNode.insertBefore(newElement, element)
-    element.parentNode.removeChild(element)
-  })
+  if (hljs) {
+    Array.from(postMarkup.getElementsByTagName('code')).map((element) => {
+      const htmlFormattedCode = hljs.highlightAuto(element.textContent).value
+      const newElement = parser.parseFromString(`<div><div>${htmlFormattedCode}</div></div>`).firstChild.childNodes[0]
+      element.parentNode.insertBefore(newElement, element)
+      element.parentNode.removeChild(element)
+    })
+  }
   // Return a well-formatted object
   return {
     id: postId,
