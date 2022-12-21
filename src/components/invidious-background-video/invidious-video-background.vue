@@ -20,7 +20,7 @@
     },
     data() {
       return {
-        internalServer: ''
+        internalServer: this.server
       }
     },
     computed: {
