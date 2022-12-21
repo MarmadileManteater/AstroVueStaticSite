@@ -10,7 +10,7 @@ const posts = allPosts.slice(0, PAGE_SIZE)
 ---
 
 <Layout title="Blog">
-  <div class='bg-white dark:bg-zinc-900 rounded-t-xl dark:text-white overflow-hidden'>
+  <div class='bg-white dark:bg-zinc-900 rounded-t-xl dark:text-white overflow-hidden lg:border lg:border-solid lg:border-black'>
     <UnifiedContentList content={posts} tagData={tags} startIndex={0} />
     {PAGE_SIZE < allPosts.length?<><a
       href='./page/1/'
