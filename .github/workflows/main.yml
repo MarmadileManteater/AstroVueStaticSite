@@ -14,6 +14,7 @@ jobs:
         uses: actions/checkout@master
         with:
           persist-credentials: false
+          submodules: recursive
 
       - name: 🧶 Yarn 
         run: yarn
