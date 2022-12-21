@@ -11,7 +11,7 @@ export const get = () => rss({
     return {
       link: `${postId}`,
       title: title,
-      pubDate: new Date(gittime).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZone: 'GMT' }),
+      pubDate: gittime,
       description: shortDescription,
       content: sanitizeHtml(html)
     }

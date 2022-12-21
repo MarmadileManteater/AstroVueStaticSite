@@ -51,7 +51,7 @@
       :tagData="tagData"
       :index="index + startIndex"
     >
-      <p class='pb-2 text-zinc-500 dark:text-zinc-400'><em>Last updated {{new Date(contentItem.gittime).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZone: 'GMT' })}} UTC</em></p>
+      <p class='pb-2 text-zinc-500 dark:text-zinc-400'><em>Last updated {{new Date(contentItem.gittime).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZone: 'GMT' })}} GMT</em></p>
     </ContentCard>
   </div>
 </template>
