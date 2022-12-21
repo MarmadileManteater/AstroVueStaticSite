@@ -11,9 +11,10 @@ const posts = allPosts.slice(0, PAGE_SIZE)
 
 <Layout title="Blog">
   <div class='bg-white dark:bg-zinc-900 rounded-t-xl dark:text-white overflow-hidden lg:border lg:border-solid lg:border-black'>
+    <a download='my-blog.xml' href="/blog/rss.xml" class='hover:underline p-2 block' >📰rss</a>
     <UnifiedContentList content={posts} tagData={tags} startIndex={0} />
     {PAGE_SIZE < allPosts.length?<><a
-      href='./page/1/'
+      href='/blog/page/1/'
       class='p-5 inline-block hover:underline'
     >Next Page &raquo;</a></>:<></>}
   </div>
