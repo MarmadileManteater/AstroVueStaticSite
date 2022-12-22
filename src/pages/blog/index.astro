@@ -1,11 +1,11 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import tags from '../../../data/tags.json'
-import { getBlogPostById, getAllBlogPostIds } from '../../dataservice/blog-posts'
+import { getAllBlogPostsSorted } from '../../dataservice/blog-posts'
 import UnifiedContentList from '../../components/unified-content-list/unified-content-list.vue';
 
 const PAGE_SIZE = 5
-const allPosts : Array<any> = getAllBlogPostIds().map((postId : string) => getBlogPostById(postId))
+const allPosts : Array<any> = getAllBlogPostsSorted()
 const posts = allPosts.slice(0, PAGE_SIZE)
 ---
 

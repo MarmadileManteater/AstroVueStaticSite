@@ -4,6 +4,14 @@ import child_process from 'child_process'
 import { DOMParser, XMLSerializer } from '@xmldom/xmldom'
 import hljs from 'highlight.js/lib/common'
 
+export function getAllBlogPostsSorted() {
+  const ids = getAllBlogPostIds()
+  const posts = ids.map((id) => getBlogPostById(id))
+  return posts.sort((a, b) => {
+    return b.gittime - a.gittime
+  })
+}
+
 export function getAllBlogPostIds() {
   const { readdirSync } = fs
   return readdirSync('./data/posts')

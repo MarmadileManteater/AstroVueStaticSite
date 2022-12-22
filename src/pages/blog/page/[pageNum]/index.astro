@@ -1,7 +1,7 @@
 ---
 import Layout from '../../../../layouts/Layout.astro'
 import tags from '../../../../../data/tags.json'
-import { getBlogPostById, getAllBlogPostIds } from '../../../../dataservice/blog-posts'
+import { getAllBlogPostsSorted, getAllBlogPostIds } from '../../../../dataservice/blog-posts'
 import UnifiedContentList from '../../../../components/unified-content-list/unified-content-list.vue';
 
 const PAGE_SIZE = 5
@@ -16,7 +16,7 @@ export function getStaticPaths() {
 }
 
 const pageNum = parseInt(Astro.params.pageNum as string)
-const allPosts : Array<any> = getAllBlogPostIds().map((postId : string) => getBlogPostById(postId))
+const allPosts : Array<any> = getAllBlogPostsSorted()
 const totalPages = allPosts.length / PAGE_SIZE
 const posts = allPosts.slice(pageNum * PAGE_SIZE, (pageNum + 1) * PAGE_SIZE)
 
