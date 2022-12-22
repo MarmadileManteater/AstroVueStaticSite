@@ -23,7 +23,7 @@ const posts = allPosts.slice(pageNum * PAGE_SIZE, (pageNum + 1) * PAGE_SIZE)
 const previousPage = pageNum > 1?`../${pageNum - 1}/`:'../../'
 ---
 
-<Layout title="Blog">
+<Layout title="Blog" description="my blog; 🤷‍♀️i guess" >
   <div class='bg-white dark:bg-zinc-900 rounded-t-xl dark:text-white overflow-hidden lg:border lg:border-solid lg:border-black'>
     <UnifiedContentList content={posts} tagData={tags} startIndex={posts.length % 2 == 0?1:0} />
     <a href={previousPage} class='p-5 inline-block hover:underline'>Previous Page &raquo;</a>

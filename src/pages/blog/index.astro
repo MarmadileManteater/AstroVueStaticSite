@@ -9,7 +9,7 @@ const allPosts : Array<any> = getAllBlogPostIds().map((postId : string) => getBl
 const posts = allPosts.slice(0, PAGE_SIZE)
 ---
 
-<Layout title="Blog">
+<Layout title="Blog" description="my blog; 🤷‍♀️i guess" >
   <div class='bg-white dark:bg-zinc-900 rounded-t-xl dark:text-white overflow-hidden lg:border lg:border-solid lg:border-black'>
     <a download='my-blog.xml' href="/blog/rss.xml" class='hover:underline p-2 block' >📰rss</a>
     <UnifiedContentList content={posts} tagData={tags} startIndex={0} />

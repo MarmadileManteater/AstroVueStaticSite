@@ -16,7 +16,7 @@ export function getStaticPaths() {
 const { postId } = Astro.params
 const post = getBlogPostById(postId)
 ---
-<Layout title={post.title as string}>
+<Layout title={post.title as string} description={post.shortDescription as string} >
   <div class='bg-white dark:bg-zinc-900 rounded-t-xl dark:text-white overflow-hidden lg:border lg:border-solid lg:border-black'>
     <div class='p-8'>
       <h2 class='text-4xl'>{post.title}</h2>

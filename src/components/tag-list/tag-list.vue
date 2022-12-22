@@ -11,7 +11,7 @@
       required: true
     } 
   })
-  
+
   const getTagData = (givenName) => {
     return props.tagData.find(({name}) => { return name === givenName })
   }
@@ -27,9 +27,13 @@
 </script>
 
 <template>
-  <Tag 
-    v-for="tag in getTagArray(tags)" 
-    :link="tag.link"
-    :name="tag.name"
-  />
+  <span
+    v-for="tag in getTagArray(tags)"
+  >
+    <Tag
+      v-if="tag !== undefined"
+      :link="tag.link"
+      :name="tag.name"
+    ></Tag>
+  </span>
 </template>
