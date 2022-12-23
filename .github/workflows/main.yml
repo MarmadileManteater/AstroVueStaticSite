@@ -22,7 +22,8 @@ jobs:
 
       - name: 🏗️ Build 
         run: |
-          cd data
+          git clone https://github.com/MarmadileManteater/gh-pages-site-data.git
+          cd gh-page-site-data
           #😢
           git log -1 --submodule=log -- "./posts/writing-the-same-trivial-site-in-astro-and-qwik.html"
           yarn build
