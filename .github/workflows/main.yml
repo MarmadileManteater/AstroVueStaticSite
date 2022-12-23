@@ -22,7 +22,7 @@ jobs:
 
       - name: 🏗️ Build 
         run: |
-          rm data
+          rm data -rf
           git clone https://github.com/MarmadileManteater/gh-pages-site-data.git data
           cd data
           #😢
