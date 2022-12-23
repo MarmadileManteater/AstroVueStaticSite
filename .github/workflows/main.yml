@@ -24,7 +24,7 @@ jobs:
         run: |
           cd data
           #😢
-          git log -n 1 ./posts/writing-the-same-trivial-site-in-astro-and-qwik.html
+          git log -1 --submodule=log -- "./posts/writing-the-same-trivial-site-in-astro-and-qwik.html"
           yarn build
 
       - name: 📦 Publish artifact
