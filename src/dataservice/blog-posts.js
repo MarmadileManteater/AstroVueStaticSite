@@ -29,9 +29,7 @@ export function getBlogPostById(postId) {
   let gitDate
   try {
     // 👩‍💻Retrieve the last modification date known by git
-    process.chdir('data')
-    const gitDateResult = execSync(`git log -1 -p ./posts/${postId}.html`)
-    process.chdir('..')
+    const gitDateResult = execSync(`cd data/ && git log -1 -p ./posts/${postId}.html`)
     gitDate = Date.parse(Array.from(gitDateResult.toString().matchAll(/Date: {3}([A-Za-z]{3} [A-Za-z]{3} [0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2} [0-9]{4} [-+][0-9]{4})/g))[0][1])
   } catch (err) {
     console.warn(`no git date found for ${postId}; falling back to using file date; this happens when a file does not have any history with git`)
