@@ -31,7 +31,7 @@ export function getBlogPostById(postId) {
     // 👩‍💻Retrieve the last modification date known by git
     const gitDateResult = execSync(`git log -n 1 ./posts/${postId}.html`, { cwd: `./data/` })
     gitDate = Date.parse(Array.from(gitDateResult.toString().matchAll(/Date: {3}([A-Za-z]{3} [A-Za-z]{3} [0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2} [0-9]{4} [-+][0-9]{4})/g))[0][1])
-    writeFileSync(`./dist/gitdate.${postId}`, `${gitDateResult}\n\n${stats.ctime}`)
+    writeFileSync(`./dist/gitdate.${postId}`, `${gitDateResult}\n\n${stats.mtime}`)
   } catch (err) {
     console.warn(`no git date found for ${postId}; falling back to using file date; this happens when a file does not have any history with git`)
     writeFileSync(`./dist/error${postId}`, err)
