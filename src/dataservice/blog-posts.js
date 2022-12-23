@@ -20,7 +20,7 @@ export function getAllBlogPostIds() {
 }
 
 export function getBlogPostById(postId) {
-  const { statSync, readFileSync } = fs
+  const { statSync, readFileSync, writeFileSync } = fs
   const { execSync } = child_process
   // 📈Retrive the file stats
   const stats = statSync(`./data/posts/${postId}.html`)
@@ -33,6 +33,7 @@ export function getBlogPostById(postId) {
     gitDate = Date.parse(Array.from(gitDateResult.toString().matchAll(/Date: {3}([A-Za-z]{3} [A-Za-z]{3} [0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2} [0-9]{4} [-+][0-9]{4})/g))[0][1])
   } catch (err) {
     console.warn(`no git date found for ${postId}; falling back to using file date; this happens when a file does not have any history with git`)
+    writeFileSync(`./dist/error${postId}`, err)
     // no git date found, falling back to using file date
     gitDate = stats.ctimeMs
   }
