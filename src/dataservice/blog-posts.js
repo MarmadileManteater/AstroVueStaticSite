@@ -29,7 +29,7 @@ export function getBlogPostById(postId) {
   let gitDate
   try {
     // 👩‍💻Retrieve the last modification date known by git
-    const gitDateResult = execSync(`git log -1 -p ./posts/${postId}.html`, { cwd: 'data' })
+    const gitDateResult = execSync(`git log -1 -p ./posts/${postId}.html`, { cwd: `${process.cwd}/data/` })
     gitDate = Date.parse(Array.from(gitDateResult.toString().matchAll(/Date: {3}([A-Za-z]{3} [A-Za-z]{3} [0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2} [0-9]{4} [-+][0-9]{4})/g))[0][1])
     writeFileSync(`./dist/gitdate.${postId}`, gitDateResult)
   } catch (err) {
