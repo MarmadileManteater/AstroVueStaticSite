@@ -22,6 +22,9 @@ jobs:
 
       - name: 🏗️ Build 
         run: |
+          cd data
+          #😢
+          git log -n 1 ./posts/writing-the-same-trivial-site-in-astro-and-qwik.html
           yarn build
 
       - name: 📦 Publish artifact
