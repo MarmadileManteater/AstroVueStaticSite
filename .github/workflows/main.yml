@@ -17,14 +17,17 @@ jobs:
           persist-credentials: false
           submodules: recursive
 
+      - name: Reclone the data submodule to get the proper history
+        run: |
+          #hacky af, but submodules in gh don't retrieve history correctly
+          rm data -rf
+          git clone https://github.com/MarmadileManteater/gh-pages-site-data.git data
+  
       - name: 🧶 Yarn 
         run: yarn
 
       - name: 🏗️ Build 
         run: |
-          #hack af, but submodules in gh don't retrieve history correctly
-          rm data -rf
-          git clone https://github.com/MarmadileManteater/gh-pages-site-data.git data
           yarn build
 
       - name: 📦 Publish artifact
