@@ -1,5 +1,5 @@
 ---
-import Header from '../components/header/header.vue'
+import HeaderSection from '../components/header/header-section.vue'
 import InvidiousVideoBackground from '../components/invidious-background-video/invidious-video-background.vue';
 import 'highlight.js/styles/vs2015.css';
 
@@ -33,7 +33,7 @@ const { title, description = '' } = Astro.props;
 	<body>
     <InvidiousVideoBackground client:load videoId='XvtpXPbbiVA' itag='134' />
     <turbo-frame id="main" data-turbo-action="advance" >
-      <Header />
+      <HeaderSection />
       <main data-title={title} style='width:1000px;max-width:100%;margin-left:auto;margin-right:auto;'>
         <slot />
       </main>

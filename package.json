@@ -22,6 +22,8 @@
   },
   "devDependencies": {
     "@astrojs/rss": "^1.2.1",
+    "eslint": "^8.30.0",
+    "eslint-plugin-vue": "^9.8.0",
     "highlight.js": "^11.7.0"
   }
 }

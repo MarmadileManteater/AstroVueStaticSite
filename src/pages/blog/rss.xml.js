@@ -16,5 +16,5 @@ export const get = () => rss({
       content: sanitizeHtml(html)
     }
   }),
-  customData: `<language>en-us</language>`,
+  customData: '<language>en-us</language>',
 })
