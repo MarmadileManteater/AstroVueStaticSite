@@ -9,7 +9,7 @@ export default defineComponent({
     server: {
       type: String,
       required: false,
-      default: 'http://localhost:8081'
+      default: 'https://invidious.namazso.eu'
     },
     itag: {
       type: String,
