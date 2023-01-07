@@ -1,8 +1,9 @@
-<script setup>
+<script lang="ts" setup>
 import UnifiedContentList from '../unified-content-list/unified-content-list.vue'
+import type { IProject } from '@marmadilemanteater/gh-static-site-lib/src/models/project'
 </script>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue'
 
 export default defineComponent({
@@ -30,7 +31,7 @@ export default defineComponent({
         this.workingArray = this.projects.map(p => p)
         break
       case 'lastUpdate':
-        this.workingArray = this.projects.map(p => p).sort((a, b) => { return new Date(b.lastUpdate).getTime() - new Date(a.lastUpdate).getTime() })
+        this.workingArray = (this.projects as IProject[]).map(p => p).sort((a, b) => { return new Date(b.lastUpdate).getTime() - new Date(a.lastUpdate).getTime() })
         break
       }
     },

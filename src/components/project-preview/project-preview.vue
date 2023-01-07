@@ -1,9 +1,9 @@
-<script setup>
+<script lang="ts" setup>
 import UnifiedContentList from '../unified-content-list/unified-content-list.vue'
 import { defineComponent } from 'vue'
 </script>
 
-<script>
+<script lang="ts">
 export default defineComponent({
   props: {
     projects: {

@@ -14,6 +14,7 @@
     "@astrojs/tailwind": "^2.1.2",
     "@astrojs/vue": "^1.2.1",
     "@hotwired/turbo": "^7.2.4",
+    "@vue/eslint-config-typescript": "^11.0.2",
     "@xmldom/xmldom": "^0.8.6",
     "astro": "^1.6.0",
     "sanitize-html": "^2.8.0",
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "@astrojs/rss": "^1.2.1",
+    "@marmadilemanteater/gh-static-site-lib": "https://github.com/MarmadileManteater/gh-static-site-lib.git",
     "eslint": "^8.30.0",
     "eslint-plugin-vue": "^9.8.0",
     "highlight.js": "^11.7.0"

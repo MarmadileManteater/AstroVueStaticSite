@@ -1,5 +1,5 @@
 ---
-import { getAllBlogPostIds, getBlogPostById } from '../../../dataservice/blog-posts'
+import { getAllBlogPostIds, getBlogPostById } from '@marmadilemanteater/gh-static-site-lib/src/dataservice/blog-posts'
 import Layout from '../../../layouts/Layout.astro'
 import tagData from '../../../../data/tags.json'
 // @ts-ignore
@@ -14,7 +14,7 @@ export function getStaticPaths() {
   })
 }
 const { postId } = Astro.params
-const post = getBlogPostById(postId)
+const post = getBlogPostById(postId as string)
 ---
 <Layout title={post.title as string} description={post.shortDescription as string} >
   <div class='bg-white dark:bg-zinc-900 rounded-t-xl dark:text-white overflow-hidden lg:border lg:border-solid lg:border-black'>

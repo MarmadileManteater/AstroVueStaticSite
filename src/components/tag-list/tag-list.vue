@@ -1,23 +1,24 @@
 
-<script setup>
+<script lang="ts" setup>
 import TagItem from '../tag/tag-item.vue'
+import type { ITag } from '@marmadilemanteater/gh-static-site-lib/src/models/project'
 const props = defineProps({
   tags: {
     type: Array,
     required: true
   },
   tagData: {
-    type: Array,
-    required: true
+    required: true,
+    type: Object
   } 
 })
 
-const getTagData = (givenName) => {
-  return props.tagData.find(({name}) => { return name === givenName })
+const getTagData = (givenName: string) : ITag => {
+  return props.tagData.find(({name} : ITag) => { return name === givenName })
 }
 
 // Get an array of tag data from an array of tag names
-const getTagArray = (tagArray) => {
+const getTagArray = (tagArray: string[]) : ITag[] => {
   const dataArray = []
   for (let i = 0; i < tagArray.length; i++) {
     dataArray.push(getTagData(tagArray[i]))
@@ -28,7 +29,7 @@ const getTagArray = (tagArray) => {
 
 <template>
   <span
-    v-for="tag in getTagArray(tags)"
+    v-for="tag in getTagArray(tags as string[])"
     :key="tag.name"
   >
     <TagItem

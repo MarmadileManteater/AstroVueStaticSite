@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue'
 export default defineComponent({
   props: {
@@ -38,10 +38,11 @@ export default defineComponent({
       'https://yt.artemislena.eu'
     ]
     const onFirstInteraction = () => {
+      const video = this.$refs.video as HTMLVideoElement
       const timeUpdate = () => {
-        if (this.$refs.video.currentTime > 3) {
-          this.$refs.video.setAttribute('data-active', 'true')
-          this.$refs.video.removeEventListener('timeupdate', timeUpdate)
+        if (video.currentTime > 3) {
+          video.setAttribute('data-active', 'true')
+          video.removeEventListener('timeupdate', timeUpdate)
         }
       }
       const onError = async () => {
@@ -54,23 +55,24 @@ export default defineComponent({
           this.internalServer = tryServer
           // in the browser, play the video whenever it's attributes change
           new MutationObserver((_, observer) => {
-            this.$refs.video.play()
+            video.play()
             observer.disconnect()
-          }).observe(this.$refs.video, { attributes: true, characterData: false, characterDataOldValue: false, childList: false })
+          }).observe(video, { attributes: true, characterData: false, characterDataOldValue: false, childList: false })
         } catch (error) {
           console.error(error)
         }
       }
-      this.$refs.video.addEventListener('error', onError)
-      this.$refs.video.addEventListener('timeupdate', timeUpdate)
+      
+      video.addEventListener('error', onError)
+      video.addEventListener('timeupdate', timeUpdate)
       setTimeout(() => {
-        if (this.$refs.video.currentTime == 0) {
+        if (video.currentTime == 0) {
           // Timeout error
           onError()
         }
       }, 6000)
       cleanUp()
-      this.$refs.video.play()
+      video.play()
     }
     const cleanUp = () => {
       window.removeEventListener('click', onFirstInteraction)

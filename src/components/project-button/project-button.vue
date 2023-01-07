@@ -1,5 +1,5 @@
 
-<script setup>
+<script lang="ts" setup>
 defineProps({
   link: {
     type: String,

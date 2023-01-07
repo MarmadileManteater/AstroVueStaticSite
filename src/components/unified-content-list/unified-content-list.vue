@@ -1,7 +1,10 @@
-<script setup>
+<script lang="ts" setup>
 import ContentCard from '../content-card/content-card.vue'
 import ProjectButton from '../project-button/project-button.vue'
-const props = defineProps({
+import type { IProject } from '@marmadilemanteater/gh-static-site-lib/src/models/project'
+import type { IBlogPost } from '@marmadilemanteater/gh-static-site-lib/src/models/blog'
+
+defineProps({
   content: {
     type: Array,
     required: true
@@ -20,13 +23,13 @@ const props = defineProps({
 
 <template>
   <div
-    v-for="(contentItem, index) in content"
+    v-for="(contentItem, index) in content  as Array<IProject|IBlogPost>"
     :key="index"
   >
     <ContentCard
       v-if="contentItem.type === 'IProject'"
       :title="contentItem.title"
-      :title-link="contentItem.buttons.at(-1).link"
+      :title-link="contentItem.buttons.at(-1)?.link"
       :summary="contentItem.summary"
       :thumbnail="contentItem.thumbnail"
       :tags="contentItem.tags"

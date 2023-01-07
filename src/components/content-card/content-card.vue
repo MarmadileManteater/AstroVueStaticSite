@@ -1,8 +1,8 @@
 
-<script setup>
+<script lang="ts" setup>
 import TagList from '../tag-list/tag-list.vue'
 
-const props = defineProps({
+defineProps({
   title: {
     type: String,
     required: true
@@ -38,6 +38,7 @@ const props = defineProps({
     default: 0
   }
 })
+
 </script>
 
 <template>
