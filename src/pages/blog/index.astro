@@ -11,7 +11,7 @@ const posts = allPosts.slice(0, PAGE_SIZE)
 ---
 
 <Layout title="Blog" description="my blog; 🤷‍♀️i guess" >
-  <div class='bg-white dark:bg-zinc-900 rounded-t-xl dark:text-white overflow-hidden lg:border lg:border-solid lg:border-black'>
+  <div class='bg-white dark:bg-zinc-900 rounded-t-xl dark:text-white overflow-hidden border-t md:border border-solid border-black'>
     <a download='my-blog.xml' href="/blog/rss.xml" class='hover:underline p-2 block' ><EmojiImage emoji="📰" /> rss</a>
     <UnifiedContentList content={posts} tagData={tags} startIndex={0} />
     {PAGE_SIZE < allPosts.length?<><a
