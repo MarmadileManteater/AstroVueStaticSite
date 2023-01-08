@@ -2,6 +2,7 @@
 import FooterBanner from '../components/footer-banner/footer-banner.vue'
 import HeaderSection from '../components/header/header-section.vue'
 import InvidiousVideoBackground from '../components/invidious-background-video/invidious-video-background.vue'
+import highlightjs from 'highlight.js/styles/vs2015.css'
 
 const { title, description = '' } = Astro.props
 ---
@@ -15,6 +16,7 @@ const { title, description = '' } = Astro.props
 		<meta name="generator" content={Astro.generator} />
     <meta name="author" content="Emma (MarmadileManteater)" />
     <meta name="description" content={description} />
+    <link href={highlightjs} rel="stylesheet" type="text/css" />
     <script>
       // using turbo for SPA like behavior
       import * as turbo from '@hotwired/turbo'
@@ -47,6 +49,7 @@ const { title, description = '' } = Astro.props
     </turbo-frame>
 	</body>
 </html>
+
 <style is:global>
   body {
     background-image: url(/src/images/stars.png);
