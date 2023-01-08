@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro'
 import tags from '../../../data/tags.json'
 import { getAllBlogPostsSorted } from '@marmadilemanteater/gh-static-site-lib/src/dataservice/blog-posts'
 import UnifiedContentList from '../../components/unified-content-list/unified-content-list.vue';
+import EmojiImage from '../../components/emoji-image/emoji-image.vue';
 
 const PAGE_SIZE = 5
 const allPosts : Array<any> = getAllBlogPostsSorted()
@@ -11,7 +12,7 @@ const posts = allPosts.slice(0, PAGE_SIZE)
 
 <Layout title="Blog" description="my blog; 🤷‍♀️i guess" >
   <div class='bg-white dark:bg-zinc-900 rounded-t-xl dark:text-white overflow-hidden lg:border lg:border-solid lg:border-black'>
-    <a download='my-blog.xml' href="/blog/rss.xml" class='hover:underline p-2 block' >📰rss</a>
+    <a download='my-blog.xml' href="/blog/rss.xml" class='hover:underline p-2 block' ><EmojiImage emoji="📰" /> rss</a>
     <UnifiedContentList content={posts} tagData={tags} startIndex={0} />
     {PAGE_SIZE < allPosts.length?<><a
       href='/blog/page/1/'

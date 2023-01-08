@@ -1,6 +1,7 @@
 
 <script lang="ts" setup>
 import TagList from '../tag-list/tag-list.vue'
+import { convertEmojiToImages } from '@marmadilemanteater/gh-static-site-lib/src/helpers/emoji'
 
 defineProps({
   title: {
@@ -67,11 +68,15 @@ defineProps({
         :href="titleLink"
         class="hover:underline"
       >
-        <h2 :class="['font-bold', 'text-2xl', 'mb-4', title.search(' ') === -1?'break-all':'break-words']">{{ title }}</h2>
+        <h2 
+          :class="['font-bold', 'text-2xl', 'mb-4', title.search(' ') === -1?'break-all':'break-words']"
+          v-html="convertEmojiToImages(title)"
+        ></h2>
       </a>
-      <p class="mb-3">
-        {{ summary }}
-      </p>
+      <p 
+        class="mb-3"
+        v-html="convertEmojiToImages(summary)"
+      ></p>
       <slot />
     </div>
   </div>
