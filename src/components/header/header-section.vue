@@ -1,9 +1,9 @@
 <template>
   <header>
     <a href="/">
-      <h2 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl p-8 text-center pb-10">
-        <span class="red text-outline text-red-500 drop-shadow-lg">Marmadile</span> 
-        <span class="green text-outline text-green-500">Manteater</span>
+      <h2 class='text-4xl sm:text-6xl md:text-7xl lg:text-8xl p-8 text-center pb-10'>
+        <span class='red text-outline text-blue-500 drop-shadow-lg'>Marmadile</span> 
+        <span class='green text-outline text-blue-400'>Manteater</span>
       </h2>
     </a>
   </header>
@@ -26,12 +26,13 @@
   }
 
   .red {
-    --outline-color: #811212;
+    --outline-color: #00247d;
   }
 
   .green {
-    --outline-color: #12812a;
+    --outline-color: #0a3083;
   }
+
 
   .text-outline {
     /*
