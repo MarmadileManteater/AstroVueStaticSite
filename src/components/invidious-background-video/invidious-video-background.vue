@@ -99,7 +99,7 @@ export default defineComponent({
     class="hover:underline text-blue text-blue-600 dark:text-red-300 dark:bg-zinc-900 bg-white p-3"
     :href="invidiousUrl"
   >
-    Watch this video on <span class="icon link">🔗</span><span class="icon"><EmojiImage emoji="📺" /></span>Invidious
+    Watch this video on <span class="icon link"><EmojiImage emoji="🔗" /></span><span class="icon"><EmojiImage emoji="📺" /></span>Invidious
   </a>
 </template>
 
