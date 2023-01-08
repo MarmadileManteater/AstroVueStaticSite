@@ -1,4 +1,5 @@
 ---
+import FooterBanner from '../components/footer-banner/footer-banner.vue'
 import HeaderSection from '../components/header/header-section.vue'
 import InvidiousVideoBackground from '../components/invidious-background-video/invidious-video-background.vue'
 
@@ -32,10 +33,17 @@ const { title, description = '' } = Astro.props
 	<body>
     <InvidiousVideoBackground client:load videoId='XvtpXPbbiVA' itag='134' />
     <turbo-frame id="main" data-turbo-action="advance" >
-      <HeaderSection />
-      <main data-title={title} style='width:1000px;max-width:100%;margin-left:auto;margin-right:auto;'>
-        <slot />
-      </main>
+      <div class='flex flex-col' style='min-height: 100vh;'>
+        <div class='wrapper' style='flex:1;display: flex;flex-direction: column; position: relative;'>
+          <HeaderSection />
+          <main data-title={title} style='width:1000px;max-width:100%;margin-left:auto;margin-right:auto;'>
+            <slot />
+          </main>
+        </div>
+        <footer style='position:relative; display: flex; flex-direction: column-reverse;'>
+          <FooterBanner />
+        </footer>
+      </div>
     </turbo-frame>
 	</body>
 </html>

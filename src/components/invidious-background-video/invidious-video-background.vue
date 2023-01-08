@@ -1,3 +1,6 @@
+<script lang="ts" setup >
+import EmojiImage from '../emoji-image/emoji-image.vue'
+</script>
 <script lang="ts">
 import { defineComponent } from 'vue'
 export default defineComponent({
@@ -96,7 +99,7 @@ export default defineComponent({
     class="hover:underline text-blue text-blue-600 dark:text-red-300 dark:bg-zinc-900 bg-white p-3"
     :href="invidiousUrl"
   >
-    Watch this video on <span class="icon link">🔗</span><span class="icon">📺</span>Invidious
+    Watch this video on <span class="icon link">🔗</span><span class="icon"><EmojiImage emoji="📺" /></span>Invidious
   </a>
 </template>
 
@@ -106,33 +109,30 @@ a, video {
   position: fixed;
   opacity: 0;
   transition: opacity 1s ease;
+  font-size: 0;
 }
 
 video[data-active="true"] + a {
-  opacity: 1;
-  bottom: 0px;
-  right: 0px;
-  border-radius: 5px 0 0 0;
-  border-top: 1px solid black;
-  border-left: 1px solid black;
+  top: 0px;
+  left: 0px;
+  right: auto;
+  bottom: auto;
+  border-radius: 0 0 5px 0;
+  position: fixed;
+  border-top: 0;
+  border-left: 0;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  font-size: 1em;
 }
 
 video[data-active="true"] + a span.link { 
   display: none;
 }
 
-@media (max-width: 1530px) {
+@media (max-width: 1500px) {
   video[data-active="true"] + a {
-    top: 0px;
-    left: 0px;
-    right: auto;
-    bottom: auto;
-    border-radius: 0 0 5px 0;
     position: absolute;
-    border-top: 0;
-    border-left: 0;
-    border-right: 1px solid black;
-    border-bottom: 1px solid black;
   }
 }
 
@@ -164,9 +164,11 @@ video {
   max-width: initial;
 }
 
-video[data-active="true"] {
+video[data-active="true"], video[data-active="true"] + a {
   opacity: 1;
 }
+
+
 
 @media (max-width: 768px) {
   video {
