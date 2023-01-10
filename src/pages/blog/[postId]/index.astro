@@ -19,9 +19,9 @@ const post = getBlogPostById(postId as string)
 ---
 <Layout title={post.title as string} description={post.shortDescription as string} >
   <div class='bg-white dark:bg-zinc-900 rounded-t-xl dark:text-white overflow-hidden border-t md:border border-solid border-black'>
-    <div class='p-8'>
+    <div class='p-6 pb-2'>
       <h2
-        class='text-4xl'
+        class='text-4xl pb-2'
         set:html={convertEmojiToImages(post.title)}
       ></h2>
       <TagList {...{tags: post.tags, tagData }} />
