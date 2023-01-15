@@ -1,0 +1,19 @@
+---
+import EmojiImage from '../components/emoji-image/emoji-image.vue'
+import Layout from '../layouts/Layout.astro'
+export function getStaticPaths() {
+  return [{
+    params: {
+      catchall: '404'
+    }
+  }]
+}
+---
+<Layout title="404 - Not Found" description="The page you have requested was not found.">
+  <div class='bg-white dark:bg-zinc-900 rounded-t-xl border-t lg:border border-solid border-black p-6 pb-2'>
+    <h2 class='font-bold text-4xl pb-4'><EmojiImage emoji='😭' /> 404 - Not Found</h2>
+    <p class='pb-4 text-lg' >
+      The page you have requested was not found.
+    </p>
+  </div>
+</Layout>
