@@ -20,8 +20,7 @@ export default defineComponent({
 
 <template>
   <div 
-    class="project-list rounded-t-xl"
-    style="overflow:hidden;"
+    class="project-list rounded-t-xl overflow-hidden"
   >
     <UnifiedContentList
       :content="projects"
