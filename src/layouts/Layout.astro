@@ -33,14 +33,14 @@ const { title, description = '' } = Astro.props
 	<body>
     <InvidiousVideoBackground client:load videoId='XvtpXPbbiVA' itag='134' />
     <turbo-frame id="main" data-turbo-action="advance" >
-      <div class='flex flex-col' style='min-height: 100vh;'>
-        <div class='wrapper' style='flex:1;display: flex;flex-direction: column; position: relative;'>
+      <div class='flex flex-col min-h-screen' >
+        <div class='wrapper flex-1 flex flex-col relative' >
           <HeaderSection />
-          <main data-title={title} style='width:1000px;max-width:100%;margin-left:auto;margin-right:auto;'>
+          <main data-title={title} class='max-w-full ml-auto mr-auto' style='width:1000px' >
             <slot />
           </main>
         </div>
-        <footer style='position:relative; display: flex; flex-direction: column-reverse;'>
+        <footer class='relative flex flex-col-reverse' >
           <FooterBanner />
         </footer>
       </div>
