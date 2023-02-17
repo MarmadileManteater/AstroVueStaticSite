@@ -56,6 +56,7 @@ defineProps({
         <img 
           :src="thumbnail"
           :alt="title"
+          style="max-height: 153px; max-width: 182px"
         >
       </a>
     </div>
