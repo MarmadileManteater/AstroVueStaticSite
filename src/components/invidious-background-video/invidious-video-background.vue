@@ -12,7 +12,7 @@ export default defineComponent({
     server: {
       type: String,
       required: false,
-      default: 'https://invidious.namazso.eu'
+      default: 'https://invidious.sethforprivacy.com'
     },
     itag: {
       type: String,
@@ -37,7 +37,7 @@ export default defineComponent({
     this.internalServer = this.server
     const invidiousInstanceList = [
       'https://invidious.sethforprivacy.com',
-      'https://invidious.namazso.eu',
+      'https://vid.puffyan.us',
       'https://yt.artemislena.eu'
     ]
     const onFirstInteraction = () => {
