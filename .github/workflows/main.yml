@@ -1,10 +1,10 @@
 
-name: Build
+name: 👩‍🔬 Test godot background scene CI
 
 on:
   workflow_dispatch:
   push:
-    branches: [development]
+    branches: [godot-scene-background]
 
 jobs:
   build:
@@ -22,7 +22,26 @@ jobs:
           #hacky af, but submodules in gh don't retrieve history correctly
           rm data -rf
           git clone https://github.com/MarmadileManteater/gh-pages-site-data.git data
-  
+
+      - name: 🧹 Make a directory for the background scene
+        run: |
+          mkdir ./data/public/godot_background/
+
+      - name: ⬇ Download just three blocks artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          workflow: godot-ci.yml 
+          workflow_conclusion: success
+          branch: development
+          path: ./data/public/godot_background/
+          name: JustThreeBlocks-HTML5
+          repo: MarmadileManteater/JustThreeBlocksBackground
+          check_artifacts:  false
+          search_artifacts: false
+          skip_unpack: false
+          if_no_artifact_found: fail
+          
       - name: 🧶 Yarn 
         run: yarn
 
