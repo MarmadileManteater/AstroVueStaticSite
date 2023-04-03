@@ -8,8 +8,8 @@ const props = defineProps({
     required: true
   },
   tagData: {
+    type: Object,
     required: true,
-    type: Object
   } 
 })
 

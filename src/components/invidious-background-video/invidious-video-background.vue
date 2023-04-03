@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import EmojiImage from '../emoji-image/emoji-image.vue'
 </script>
 <script lang="ts">
@@ -96,7 +96,7 @@ export default defineComponent({
   ><slot /></video>
   <a
     target="_blank"
-    class="hover:underline text-blue text-blue-600 dark:text-red-300 dark:bg-zinc-900 bg-white p-3"
+    class="hover:underline text-blue text-blue-600 dark:text-red-300 dark:bg-zinc-900 bg-white p-3 z-10"
     :href="invidiousUrl"
   >
     Watch this video on <span class="icon link"><EmojiImage emoji="🔗" /></span><span class="icon"><EmojiImage emoji="📺" /></span>Invidious
