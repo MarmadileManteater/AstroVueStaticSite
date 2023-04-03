@@ -2,8 +2,8 @@
   <header>
     <a href="/">
       <h2 class='z-1 relative text-4xl sm:text-6xl md:text-7xl lg:text-8xl p-8 text-center pb-10'>
-          <span><span class='colour1 text-outline text-red-400 drop-shadow-lg'>Marma</span><span class='colour2 text-outline text-green-400 drop-shadow-lg'>dile</span></span>
-          <span><span class='colour2 text-outline text-green-400 drop-shadow-lg'>M</span><span class='colour3 text-outline text-blue-400'>anteater</span></span>
+          <span class='section1'><span class='colour1 text-outline text-red-400 drop-shadow-lg'>Marma</span><span class='colour2 text-outline text-green-400 drop-shadow-lg'>dile</span></span>
+          <span class='section2'><span class='colour2 text-outline text-green-400 drop-shadow-lg'>M</span><span class='colour3 text-outline text-blue-400'>anteater</span></span>
       </h2>
     </a>
   </header>
@@ -56,4 +56,15 @@
   header {
     max-width: 100%;
   }
+  @media (max-width: 420px) {
+    .section1 .colour2 {
+      color: #F87171;
+      --outline-colour: #651111;
+    }
+    .section2 .colour2 {
+      color: #60A5FA;
+      --outline-colour: #120a83;
+    }
+  }
+
 </style>

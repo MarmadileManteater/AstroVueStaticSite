@@ -27,7 +27,6 @@ export default defineComponent({
   },
   methods: {
     enableGodot() {
-      console.log('loaded')
       this.loadGodot = true
     }
   }
