@@ -93,7 +93,7 @@ export default defineComponent({
     loop
     muted
     :src="videoUrl"
-  ><slot /></video>
+  ></video>
   <a
     target="_blank"
     class="hover:underline text-blue text-blue-600 dark:text-red-300 dark:bg-zinc-900 bg-white p-3 z-10"
