@@ -44,7 +44,7 @@ defineProps({
 
 <template>
   <div
-    :class="['outer-grid', 'project-card', 'md:pt-0', thumbnail !== null?'pt-4':'pt-0' , index % 2 === 0?'dark:bg-zinc-800':'dark:bg-zinc-900', index % 2 === 0?'bg-zinc-100':'bg-white', 'dark:text-white']"
+    :class="['outer-grid', 'project-card', 'md:pt-0', thumbnail !== null?'pt-4':'pt-0' , index % 2 === 0?'dark:bg-zinc-800':'', index % 2 === 0?'bg-zinc-100':'', 'dark:text-white']"
   >
     <div
       v-if="thumbnail !== null"

@@ -30,10 +30,10 @@ const { title, description = '' } = Astro.props
     </script>
     <title >{title}</title>
 	</head>
-	<body data-semi-transparent="true">
+	<body >
     <BackgroundElement client:load videoId='1t54WpT-aus' itag='134' sceneUrl='/godot_background/index.html' />
     <turbo-frame id="main" data-turbo-action="advance" >
-      <div class='flex flex-col min-h-screen' >
+      <div class='flex flex-col min-h-screen' data-semi-transparent='true' >
         <div class='wrapper flex-1 flex flex-col relative' >
           <HeaderSection />
           <main data-title={title} class='max-w-full ml-auto mr-auto' style='width:1000px' >
@@ -153,54 +153,6 @@ const { title, description = '' } = Astro.props
     /* hide filters in reader view
     (stylesheets are not processed in reader view, so the inline style is none) */
     display: block !important;
-  }
-
-
-  :root {
-    --outline-color: #000;
-  }
-
-  header h2 {
-    display: flex;
-    justify-content: center;
-  }
-
-  @media (max-width: 420px) {
-    header h2 {
-      flex-direction: column;
-    }
-  }
-
-  .colour1 {
-    --outline-colour: #651111;
-  }
-
-  .colour2 {
-    --outline-colour: #0a831a;
-  }
-
-  .colour3 {
-    --outline-colour: #120a83;
-  }
-
-
-  .text-outline {
-    /*
-        style adapted from this answer by Elvin Mammadov
-        https://stackoverflow.com/a/47884204
-    */
-    text-shadow: 4px 0 0 var(--outline-colour),
-                -4px 0 0 var(--outline-colour),
-                0 4px 0 var(--outline-colour),
-                0 -4px 0 var(--outline-colour),
-                2px 2px var(--outline-colour),
-                -2px -2px 0 var(--outline-colour),
-                2px -2px 0 var(--outline-colour),
-                -2px 2px 0 var(--outline-colour);
-  }
-
-  header {
-    max-width: 100%;
   }
 
   .csharp {
