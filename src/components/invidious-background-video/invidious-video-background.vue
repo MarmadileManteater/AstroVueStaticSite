@@ -172,6 +172,15 @@ video[data-active="true"], video[data-active="true"] + a {
 
 @media (max-width: 768px) {
   video {
+    top: -100px;
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 500px) {
+  video {
+    top: -50px;
     width: 100%;
     height: auto;
   }
