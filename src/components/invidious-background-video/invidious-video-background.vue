@@ -88,19 +88,21 @@ export default defineComponent({
 </script>
 
 <template>
-  <video 
-    ref="video"
-    loop
-    muted
-    :src="videoUrl"
-  ></video>
-  <a
-    target="_blank"
-    class="hover:underline text-blue text-blue-600 dark:text-red-300 dark:bg-zinc-900 bg-white p-3 z-10"
-    :href="invidiousUrl"
-  >
-    Watch this video on <span class="icon link"><EmojiImage emoji="🔗" /></span><span class="icon"><EmojiImage emoji="📺" /></span>Invidious
-  </a>
+  <div class='flex justify-center fixed top-0 left-0 w-screen h-screen'>
+    <video 
+      ref="video"
+      loop
+      muted
+      :src="videoUrl"
+    ></video>
+    <a
+      target="_blank"
+      class="hover:underline text-blue text-blue-600 dark:text-red-300 dark:bg-zinc-900 bg-white p-3 z-10"
+      :href="invidiousUrl"
+    >
+      Watch this video on <span class="icon link"><EmojiImage emoji="🔗" /></span><span class="icon"><EmojiImage emoji="📺" /></span>Invidious
+    </a>
+  </div>
 </template>
 
 <style scoped>
@@ -161,7 +163,6 @@ video {
   margin-left: -50%;
   min-width: 100%;
   height: 100vh;
-  max-width: initial;
 }
 
 video[data-active="true"], video[data-active="true"] + a {
