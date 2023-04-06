@@ -15,31 +15,36 @@ export default defineComponent({
     tagData: {
       type: Array,
       required: true
+    },
+    clientSideSorting: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+    givenSortType: {
+      type: String,
+      required: false,
+      default: 'featured'
     }
   },
   data() {
     return {
-      workingArray: this.projects.map(p => p),
       exposedArray: this.projects.map(p => p),
-      sortType: 'featured'
+      sortType: this.givenSortType
+    }
+  },
+  computed: {
+    projectsList() {
+      switch (this.sortType) {
+      default:
+      case 'featured':
+        return this.projects.map(p => p)
+      case 'lastUpdate':
+        return (this.projects as IProject[]).map(p => p).sort((a, b) => { return new Date(b.lastUpdate).getTime() - new Date(a.lastUpdate).getTime() })
+      }
     }
   },
   watch: {
-    sortType() {
-      switch (this.sortType) {
-      case 'featured':
-        this.workingArray = this.projects.map(p => p)
-        break
-      case 'lastUpdate':
-        this.workingArray = (this.projects as IProject[]).map(p => p).sort((a, b) => { return new Date(b.lastUpdate).getTime() - new Date(a.lastUpdate).getTime() })
-        break
-      }
-    },
-    workingArray() {
-      for (let i = 0; i < this.workingArray.length; i++) {
-        this.exposedArray[i] = this.workingArray[i]
-      }
-    }
   },
   methods: {
     sortByFeatured() {
@@ -54,16 +59,19 @@ export default defineComponent({
 
 <template>
   <div class="project-list">
-    <a 
-      :class="[sortType === 'featured'?'decoration-solid underline cursor-default':'cursor-pointer', 'select-none', 'p-4', 'inline-block']"
-      @click="sortByFeatured"
-    >Sort by featured</a>
-    <a 
-      :class="[sortType === 'lastUpdate'?'decoration-solid underline cursor-default':'cursor-pointer', 'select-none', 'p-4', 'inline-block']"
-      @click="sortByLatest"
-    >Sort by last updated</a>
+    <span v-if="clientSideSorting">
+      <a 
+        :class="[sortType === 'featured'?'decoration-solid underline cursor-default':'cursor-pointer', 'select-none', 'p-4', 'inline-block']"
+        @click="sortByFeatured"
+      >Sort by featured</a>
+      <a 
+        :class="[sortType === 'lastUpdate'?'decoration-solid underline cursor-default':'cursor-pointer', 'select-none', 'p-4', 'inline-block']"
+        @click="sortByLatest"
+      >Sort by last updated</a>
+    </span>
+    <slot/>
     <UnifiedContentList
-      :content="exposedArray"
+      :content="projectsList"
       :tag-data="tagData"
       :start-index="0"
     />

@@ -1,0 +1,15 @@
+---
+import Layout from '../../../layouts/Layout.astro'
+import projects from '../../../../data/projects.json'
+import tags from '../../../../data/tags.json'
+import ProjectList from '../../../components/project-list/project-list.vue'
+---
+
+<Layout title="Projects" description="my projects; 🤷‍♀️i guess">
+  <div class='bg-white dark:bg-zinc-900 rounded-t-xl dark:text-white border-t md:border border-solid border-black'>
+    <ProjectList givenSortType="lastUpdate" clientSideSorting={false} projects={projects} tagData={tags}>
+      <a class={'cursor-pointer select-none p-4 inline-block'} href='/projects'>Sort by featured</a>
+      <span class={'decoration-solid underline cursor-default select-none p-4 inline-block'} >Sort by last updated</span>
+    </ProjectList>
+  </div>
+</Layout>

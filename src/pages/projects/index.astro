@@ -7,6 +7,9 @@ import ProjectList from '../../components/project-list/project-list.vue'
 
 <Layout title="Projects" description="my projects; 🤷‍♀️i guess">
   <div class='bg-white dark:bg-zinc-900 rounded-t-xl dark:text-white border-t md:border border-solid border-black'>
-    <ProjectList client:load projects={projects} tagData={tags}></ProjectList>
+    <ProjectList clientSideSorting={false} projects={projects} tagData={tags}>
+      <span class={'decoration-solid underline select-none p-4 inline-block'} >Sort by featured</span>
+      <a class={'cursor-pointer select-none p-4 inline-block'} href='/projects/updated'>Sort by last updated</a>
+    </ProjectList>
   </div>
 </Layout>
