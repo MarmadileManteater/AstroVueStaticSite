@@ -29,7 +29,6 @@ export default defineComponent({
   },
   data() {
     return {
-      exposedArray: this.projects.map(p => p),
       sortType: this.givenSortType
     }
   },
