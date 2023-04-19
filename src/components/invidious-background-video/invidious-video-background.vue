@@ -44,7 +44,7 @@ export default defineComponent({
       const video = this.$refs.video as HTMLVideoElement
       const timeUpdate = () => {
         if (video.currentTime > 3) {
-          video.setAttribute('data-active', 'true')
+          video.parentElement?.setAttribute('data-active', 'true')
           video.removeEventListener('timeupdate', timeUpdate)
         }
       }
@@ -95,17 +95,18 @@ export default defineComponent({
       muted
       :src="videoUrl"
     ></video>
-    <a
-      target="_blank"
-      class="hover:underline text-blue text-blue-600 dark:text-red-300 dark:bg-zinc-900 bg-white p-3 z-10"
-      :href="invidiousUrl"
-    >
-      Watch this video on <span class="icon link"><EmojiImage emoji="🔗" /></span><span class="icon"><EmojiImage emoji="📺" /></span>Invidious
-    </a>
   </div>
+  <a
+    target="_blank"
+    class="hover:underline text-blue text-blue-600 dark:text-red-300 dark:bg-zinc-900 bg-white p-3 z-10 fixed top-0 left-0"
+    :href="invidiousUrl"
+  >
+    Watch this video on <span class="icon link"><EmojiImage emoji="🔗" /></span><span class="icon"><EmojiImage emoji="📺" /></span>Invidious
+  </a>
 </template>
 
 <style scoped>
+
 
 a, video {
   position: fixed;
@@ -114,7 +115,7 @@ a, video {
   font-size: 0;
 }
 
-video[data-active="true"] + a {
+div[data-active="true"] + a {
   top: 0px;
   left: 0px;
   right: auto;
@@ -128,18 +129,18 @@ video[data-active="true"] + a {
   font-size: 1em;
 }
 
-video[data-active="true"] + a span.link { 
+div[data-active="true"] + a span.link { 
   display: none;
 }
 
 @media (max-width: 1500px) {
-  video[data-active="true"] + a {
+  div[data-active="true"] + a {
     position: absolute;
   }
 }
 
 @media (max-width: 1368px) {
-  video[data-active="true"] + a {
+  div[data-active="true"] + a {
     top: 0px;
     left: 0px;
     right: auto;
@@ -148,10 +149,10 @@ video[data-active="true"] + a span.link {
     padding: 3px;
     font-size: 0;
   }
-  video[data-active="true"] + a .icon {
+  div[data-active="true"] + a .icon {
     font-size: initial;
   }
-  video[data-active="true"] + a span.link { 
+  div[data-active="true"] + a span.link { 
     display: inline;
   }
 }
@@ -165,11 +166,9 @@ video {
   height: 100vh;
 }
 
-video[data-active="true"], video[data-active="true"] + a {
+div[data-active="true"] video, div[data-active="true"] + a {
   opacity: 1;
 }
-
-
 
 @media (max-width: 768px) {
   video {
@@ -186,6 +185,5 @@ video[data-active="true"], video[data-active="true"] + a {
     height: auto;
   }
 }
-
 
 </style>
