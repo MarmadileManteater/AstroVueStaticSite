@@ -2,9 +2,4 @@
 
 This is an exact recreation of my [Qwik Static Site](https://github.com/MarmadileManteater/QwikStaticSite) using Astro and Vue.
 
-I wanted to compare these two options side by side.
-
-You can 👁view this site:
- - on gh pages [here&raquo;](https://marmadilemanteater.github.io/astro)
- - on linode [here&raquo;](https://astro.marmadilemanteater.dev)
- - on pythonanywhere [here&raquo;](https://marmadilemanteater.pythonanywhere.com/astro)
+I wanted to compare these two options side by side, but I have decided recently to stop updating three different versions of my site in favor of just keeping [SvelteKitSite](https://github.com/MarmadileManteater/SveltekitSite).
